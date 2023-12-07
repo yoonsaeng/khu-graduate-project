@@ -1,2 +1,8 @@
-.App {
+body {
+  background-color: #63cc63;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
