@@ -1,13 +1,15 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Login from "./components/Login";
 import Signin from "./components/Signin";
 import Refresh from "./components/Refresh";
 
 import "./App.css";
 import "./style/style.css";
+import image from "./images/image.jpeg";
 
 const App = () => {
   const [mode, setMode] = useState("");
+  const [XSSmessage, setXSSmessage] = useState(``);
 
   useEffect(() => {
     const AuthHandler = async () => {
@@ -49,6 +51,31 @@ const App = () => {
     }
   };
 
+  const setXSSmessageHandler = (event) => {
+    setXSSmessage(event.target.value);
+  };
+
+  const excuteReactFunction = (message) => {
+    try {
+      // 사용자로부터 입력받은 텍스트를 사용하여 함수 생성
+      const dynamicFunction = new Function("React", message);
+
+      // React 객체를 전달하여 함수 실행
+      dynamicFunction(React);
+    } catch (err) {
+      alert("REFLECTED XSS ATTACK FAIL");
+    }
+  };
+
+  const reflectedXSSHandler = () => {
+    excuteReactFunction(XSSmessage);
+    alert("REFLECTED XSS ATTACK");
+  };
+
+  const storedXSSHandler = () => {
+    alert("Stored XSS ATTACK");
+  };
+
   let content = null;
 
   if (mode === "LOGIN") {
@@ -68,6 +95,17 @@ const App = () => {
   return (
     <>
       <div>{content}</div>
+      <p>
+        <input
+          type="text"
+          placeholder="XSS Message"
+          onChange={setXSSmessageHandler}
+        />
+      </p>
+      <p>
+        <button onClick={reflectedXSSHandler}>REFLECTED XSS ATTACK</button>
+      </p>
+      <img src={image} alt="Stored XSS" onClick={storedXSSHandler} />
     </>
   );
 };
