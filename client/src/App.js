@@ -10,6 +10,9 @@ import image from "./images/image.jpeg";
 const App = () => {
   const [mode, setMode] = useState("");
   const [XSSmessage, setXSSmessage] = useState(``);
+  const id = localStorage.getItem("id");
+  const accessToken = localStorage.getItem("accessToken");
+  const refreshToken = localStorage.getItem("refreshToken");
 
   useEffect(() => {
     const AuthHandler = async () => {
@@ -73,7 +76,13 @@ const App = () => {
   };
 
   const storedXSSHandler = () => {
-    alert("Stored XSS ATTACK");
+    if (id && accessToken && refreshToken) {
+      alert(
+        `STORED XSS ATTACK\nID:${id}\nACCESS_TOKEN:${accessToken}\nREFRESH_TOKEN:${refreshToken}`
+      );
+    } else {
+      alert("STORED XSS ATTACK");
+    }
   };
 
   let content = null;
