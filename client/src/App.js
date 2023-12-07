@@ -3,6 +3,9 @@ import Login from "./components/Login";
 import Signin from "./components/Signin";
 import Refresh from "./components/Refresh";
 
+import "./App.css";
+import "./style/style.css";
+
 const App = () => {
   const [mode, setMode] = useState("");
 
@@ -55,8 +58,7 @@ const App = () => {
   } else if (mode === "WELCOME") {
     content = (
       <>
-        <h2>메인 페이지에 오신 것을 환영합니다</h2>
-        <p>로그인에 성공하셨습니다.</p>
+        <h2>로그인 성공 페이지</h2>
         <button onClick={logoutClickHandler}>로그아웃</button>
         <Refresh setMode={setMode} />
       </>

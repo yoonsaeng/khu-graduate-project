@@ -71,20 +71,16 @@ const Signin = (props) => {
         </p>
 
         <p>
-          <input type="submit" value="회원가입" onClick={SigninHandler} />
+          <button onClick={SigninHandler}>회원가입</button>
+          <button
+            onClick={() => {
+              props.setMode("LOGIN");
+            }}
+          >
+            로그인
+          </button>
         </p>
       </div>
-
-      <p>
-        로그인화면으로 돌아가기{" "}
-        <button
-          onClick={() => {
-            props.setMode("LOGIN");
-          }}
-        >
-          로그인
-        </button>
-      </p>
     </>
   );
 };

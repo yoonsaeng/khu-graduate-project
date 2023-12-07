@@ -43,7 +43,7 @@ const Login = (props) => {
 
   return (
     <>
-      <h2>로그인</h2>
+      <h2>JWT 테스트</h2>
 
       <div>
         <p>
@@ -64,20 +64,16 @@ const Login = (props) => {
         </p>
 
         <p>
-          <input type="submit" value="로그인" onClick={LoginHandler} />
+          <button onClick={LoginHandler}>로그인</button>
+          <button
+            onClick={() => {
+              props.setMode("SIGNIN");
+            }}
+          >
+            회원가입
+          </button>
         </p>
       </div>
-
-      <p>
-        계정이 없으신가요?{" "}
-        <button
-          onClick={() => {
-            props.setMode("SIGNIN");
-          }}
-        >
-          회원가입
-        </button>
-      </p>
     </>
   );
 };
