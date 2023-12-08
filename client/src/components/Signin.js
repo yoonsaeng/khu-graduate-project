@@ -23,12 +23,12 @@ const Signin = (props) => {
 
       const resJson = await response.json();
 
-      if (resJson.isLogin === "True") {
+      if (resJson.isSuccess === "True") {
         alert("회원가입이 완료되었습니다!");
         props.setMode("LOGIN");
         //onLogin();
       } else {
-        alert(resJson.isLogin);
+        alert(resJson.isSuccess);
       }
     } catch (err) {
       throw err;
